@@ -15,6 +15,9 @@ class Registration(models.Model):
     phone = models.CharField(max_length=15)
     college = models.CharField(max_length=100)
     session = models.ForeignKey(Session, on_delete=models.CASCADE, related_name='registrations')
+    coupon = models.CharField(max_length=100, null=True, blank=True)
+    verified = models.BooleanField(default=False)
+
 
     def __str__(self):
         return self.name

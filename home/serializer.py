@@ -14,4 +14,4 @@ class SessionSerializer(serializers.ModelSerializer):
 class CouponSerializer(serializers.ModelSerializer):
     class Meta:
         model = Coupon
-        fields = '__all__'  # this is for all the fields
+        fields = ["code"]  # this is for all the fields

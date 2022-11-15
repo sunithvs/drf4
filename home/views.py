@@ -1,7 +1,3 @@
-from django.shortcuts import render
-
-# Create your views here.
-from django.shortcuts import render
 from rest_framework import viewsets
 from rest_framework.response import Response
 
@@ -27,7 +23,7 @@ class CouponViewSet(viewsets.ModelViewSet):
     def create(self, request, *args, **kwargs):
         code_name = request.data['code']
         queryset = Coupon.objects.filter(code=code_name).first()
-        if queryset.exists() and queryset.is_active:
+        if queryset and queryset.is_active:
             serializer = CouponSerializer(queryset, many=False)
             return Response(serializer.data)
         else:

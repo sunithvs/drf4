@@ -23,7 +23,6 @@ router = routers.DefaultRouter()
 router.register(r'session', views.SessionViewSet)
 router.register(r'coupon', views.CouponViewSet)
 
-
 urlpatterns = [
-    path("", router.urls),
+    path("", include(router.urls)),
 ]

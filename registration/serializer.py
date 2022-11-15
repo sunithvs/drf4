@@ -3,6 +3,8 @@ this file is for defining the serializers for the models for registration app
 """
 
 from rest_framework import serializers
+
+from home.models import Coupon
 from registration.models import Registration
 
 
@@ -14,7 +16,9 @@ class RegistrationSerializer(serializers.ModelSerializer):
     """function for validating the coupon code"""
 
     def validate_coupon(self, value):
-        if value.is_active:
+        coupon = Coupon.objects.filter(code=value).first()
+
+        if coupon and coupon.is_active:
             return value
         else:
             raise serializers.ValidationError('Invalid coupon code')
@@ -26,5 +30,3 @@ class RegistrationSerializer(serializers.ModelSerializer):
             return value
         else:
             raise serializers.ValidationError('Invalid session')
-
-
