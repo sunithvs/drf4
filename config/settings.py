@@ -46,7 +46,7 @@ INSTALLED_APPS = [
 
 ]
 
-APPLICATION_NAME = "drf"
+APPLICATION_NAME = "trebuchet"
 ADMIN_URL = "admin/"
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
