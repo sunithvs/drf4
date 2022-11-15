@@ -27,7 +27,7 @@ DEBUG = True
 ALLOWED_HOSTS = ["*"]
 cors_allowed_origins = ["https://localhost:8000", "https://api.trebuchet.one", "https://trebuchet.one"]
 # Application definition
-
+CSRF_TRUSTED_ORIGINS = ["https://localhost:8000", "https://api.trebuchet.one", "https://trebuchet.one"]
 INSTALLED_APPS = [
     # third party apps
     "jazzmin",
