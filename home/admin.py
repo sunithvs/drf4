@@ -11,7 +11,7 @@ class CouponAdmin(admin.ModelAdmin):
 
 
 class SessionAdmin(admin.ModelAdmin):
-    list_display = ['name', 'start_date', 'end_date', 'description', 'price', 'coupon']
+    list_display = ['name', 'start_date', 'end_date', 'description', 'price', ]
 
 
 admin.site.register(Coupon, CouponAdmin)

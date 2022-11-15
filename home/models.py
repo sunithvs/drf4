@@ -9,7 +9,7 @@ This model for creating a coupon
 
 
 class Coupon(models.Model):
-    code = models.CharField(max_length=15,unique=True)
+    code = models.CharField(max_length=15, unique=True)
     valid_from = models.DateTimeField()
     valid_to = models.DateTimeField()
     discount = models.IntegerField()
@@ -17,9 +17,11 @@ class Coupon(models.Model):
 
     def __str__(self):
         return self.code
+
     """
     function to check if the coupon is valid or not
     """
+
     def is_valid(self):
         return self.active and self.valid_from <= timezone.now() <= self.valid_to
 
@@ -35,11 +37,12 @@ class Session(models.Model):
     end_date = models.DateTimeField()
     description = models.TextField()
     price = models.DecimalField(max_digits=6, decimal_places=2)
-    coupon = models.ForeignKey(Coupon, on_delete=models.CASCADE, related_name='sessions')
+    coupon = models.ManyToManyField(Coupon, related_name='sessions', blank=True)
 
     def __str__(self):
         return self.name
+
     """ function to check if the session is active or not"""
+
     def is_active(self):
         return self.start_date <= timezone.now() <= self.end_date
-
