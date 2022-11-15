@@ -17,7 +17,7 @@ class Registration(models.Model):
     session = models.ForeignKey(Session, on_delete=models.CASCADE, related_name='registrations')
     coupon = models.CharField(max_length=100, null=True, blank=True)
     verified = models.BooleanField(default=False)
-
+    attachment = models.FileField(upload_to='attachments', null=True, blank=True)
 
     def __str__(self):
         return self.name
