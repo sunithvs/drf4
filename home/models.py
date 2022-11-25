@@ -31,6 +31,16 @@ A model to create a session
 """
 
 
+# model for instructor
+class Instructor(models.Model):
+    name = models.CharField(max_length=100)
+    description = models.TextField()
+    profile = models.ImageField(upload_to='profile', blank=True)
+
+    def __str__(self):
+        return self.name
+
+
 class Session(models.Model):
     name = models.CharField(max_length=100)
     start_date = models.DateTimeField()
@@ -38,6 +48,7 @@ class Session(models.Model):
     description = models.TextField()
     price = models.DecimalField(max_digits=6, decimal_places=2)
     coupon = models.ManyToManyField(Coupon, related_name='sessions', blank=True)
+    instructors = models.ManyToManyField(Instructor, related_name='sessions', blank=True)
 
     def __str__(self):
         return self.name

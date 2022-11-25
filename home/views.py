@@ -1,3 +1,4 @@
+from django.views.generic import TemplateView
 from rest_framework import viewsets
 from rest_framework.response import Response
 
@@ -28,3 +29,12 @@ class CouponViewSet(viewsets.ModelViewSet):
             return Response(serializer.data)
         else:
             return Response({'error': 'invalid coupon code'}, status=400)
+
+
+class HomeView(TemplateView):
+    template_name = "login/index.html"
+
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+        context['title'] = 'Home'
+        return context

@@ -35,6 +35,10 @@ INSTALLED_APPS = [
     "jazzmin",
     "rest_framework",
     'drf_yasg',  # swagger ui
+    'allauth',
+    'allauth.account',
+    'allauth.socialaccount',
+    'allauth.socialaccount.providers.google',
 
     # django apps
     'django.contrib.admin',
@@ -46,7 +50,8 @@ INSTALLED_APPS = [
 
     # local apps
     "home",
-    "registration"
+    "registration",
+    "login"
 
 ]
 
@@ -137,6 +142,26 @@ STATIC_ROOT = "/var/www/html/static/"
 MEDIA_ROOT = '/var/www/html/media'
 # Default primary key field type
 # https://docs.djangoproject.com/en/4.1/ref/settings/#default-auto-field
+AUTHENTICATION_BACKENDS = [
+    'django.contrib.auth.backends.ModelBackend',
+    'allauth.account.auth_backends.AuthenticationBackend'
+]
+
+SOCIALACCOUNT_PROVIDERS = {
+    'google': {
+        'SCOPE': [
+            'profile',
+            'email',
+        ],
+        'AUTH_PARAMS': {
+            'access_type': 'online',
+        }
+    }
+}
+SITE_ID = 2
+
+LOGIN_REDIRECT_URL = '/'
+LOGOUT_REDIRECT_URL = '/'
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
