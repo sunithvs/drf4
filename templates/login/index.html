@@ -555,6 +555,60 @@
                 text-align: center;
             }
         }
+
+        .login {
+            display: "flex";
+            background-color: "red"
+
+        }
+
+        .social-button {
+            margin: 10px;
+            width: 200px;
+            padding: 5px 0px;
+            font-size: 18px;
+            font-weight: bold;
+            border-radius: 8px;
+            outline: none;
+            border: none;
+            text-align: center;
+            cursor: pointer;
+            transition: .2s all;
+            display: flex;
+            justify-content: center;
+            align-items: baseline;
+            text-decoration: none;
+        }
+
+        .git {
+            background-color: #24292e;
+            color: white;
+        }
+
+        .google {
+            background-color: #fff;
+            /*   color: #5857FD; */
+            color: white;
+            /*   border: 2px solid #6563FF; */
+
+            background: #FC5C7D; /* fallback for old browsers */
+            background: -webkit-linear-gradient(to right, #6A82FB, #FC5C7D); /* Chrome 10-25, Safari 5.1-6 */
+            background: linear-gradient(to right, #6A82FB, #FC5C7D); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+
+
+        }
+
+        .social-button:hover,
+        .social-button:active {
+            transform: translateY(-2px);
+            box-shadow: rgba(50, 50, 93, 0.25) 0px 13px 27px -5px, rgba(0, 0, 0, 0.3) 0px 8px 16px -8px;
+        }
+
+        .icon {
+            margin-right: 10px;
+        }
+
+
     </style>
 </head>
 
@@ -710,8 +764,14 @@
                     {% if user.is_authenticated %}
                         <a href="form.html" class="btn_1 d-block">Enroll the course</a>
                     {% else %}
-                        <a href="{% provider_login_url 'github' %}">Login to enroll</a>
-
+                        <div class="login d-flex align-items-center ">
+                            <a href="{% provider_login_url 'github' %}" class="git social-button">
+                                <i class="uil uil-github-alt icon"></i>Github
+                            </a>
+                            <a href="{% provider_login_url 'google' %}" class="google social-button">
+                                <i class="uil uil-google icon"></i> Google
+                            </a>
+                        </div>
                     {% endif %}
                 </div>
 
