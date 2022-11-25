@@ -38,3 +38,4 @@ class HomeView(TemplateView):
         context = super().get_context_data(**kwargs)
         context['title'] = 'Home'
         return context
+
