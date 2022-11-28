@@ -1,3 +1,4 @@
+from django.contrib.redirects.models import Redirect
 from django.views.generic import TemplateView
 from rest_framework import viewsets
 from rest_framework.response import Response
@@ -33,9 +34,7 @@ class CouponViewSet(viewsets.ModelViewSet):
 
 class HomeView(TemplateView):
     template_name = "login/index.html"
+    http_method_names = ['get']
 
-    def get_context_data(self, **kwargs):
-        context = super().get_context_data(**kwargs)
-        context['title'] = 'Home'
-        return context
-
+    def get(self, request, *args, **kwargs):
+        return Redirect("https://trebuchet.one/enroll.html")
