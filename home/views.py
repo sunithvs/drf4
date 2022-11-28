@@ -1,4 +1,4 @@
-from django.contrib.redirects.models import Redirect
+from django.shortcuts import redirect
 from django.views.generic import TemplateView
 from rest_framework import viewsets
 from rest_framework.response import Response
@@ -37,4 +37,4 @@ class HomeView(TemplateView):
     http_method_names = ['get']
 
     def get(self, request, *args, **kwargs):
-        return Redirect("https://trebuchet.one/enroll.html")
+        return redirect("https://trebuchet.one/enroll.html")

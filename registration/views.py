@@ -1,5 +1,4 @@
-from django.contrib.redirects.models import Redirect
-from django.shortcuts import render
+from django.shortcuts import render,redirect
 from rest_framework import viewsets
 from rest_framework.response import Response
 
@@ -19,4 +18,4 @@ class RegistrationViewSet(viewsets.ModelViewSet):
         #     return Response(serializer.data, status=201)
         # else:
         #     return Response(serializer.errors, status=400)
-        return Redirect("https://trebuchet.one/course/final.html")
+        return redirect("https://trebuchet.one/course/final.html")
