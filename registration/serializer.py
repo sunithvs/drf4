@@ -12,7 +12,7 @@ class RegistrationSerializer(serializers.ModelSerializer):
     class Meta:
         model = Registration
         # fields of Registration
-        fields = ["name", "phone", "college", "attachment", "transaction_id"]
+        fields = ["name", "phone", "college", "attachment", "transaction_id","email"]
 
     """function for validating the coupon code"""
 
