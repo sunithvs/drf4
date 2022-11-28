@@ -11,7 +11,7 @@ A model to accept registration for the session in home app
 
 class Registration(models.Model):
     name = models.CharField(max_length=100)
-    email = models.EmailField()
+    email = models.EmailField(blank=True,null=True)
     phone = models.CharField(max_length=15)
     college = models.CharField(max_length=100)
     session = models.ForeignKey(Session, on_delete=models.CASCADE, related_name='registrations', default=1)
@@ -22,6 +22,6 @@ class Registration(models.Model):
 
     def __str__(self):
         return self.name
-
-    class Meta:
-        unique_together = ('email', 'session')
+    #
+    # class Meta:
+    #     unique_together = ('email', 'session')
