@@ -14,8 +14,9 @@ class Registration(models.Model):
     email = models.EmailField()
     phone = models.CharField(max_length=15)
     college = models.CharField(max_length=100)
-    session = models.ForeignKey(Session, on_delete=models.CASCADE, related_name='registrations')
+    session = models.ForeignKey(Session, on_delete=models.CASCADE, related_name='registrations', default=1)
     coupon = models.CharField(max_length=100, null=True, blank=True)
+    transaction_id = models.CharField(max_length=100, null=True, blank=True)
     verified = models.BooleanField(default=False)
     attachment = models.FileField(upload_to='attachments', null=True, blank=True)
 

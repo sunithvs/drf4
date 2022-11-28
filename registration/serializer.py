@@ -11,11 +11,14 @@ from registration.models import Registration
 class RegistrationSerializer(serializers.ModelSerializer):
     class Meta:
         model = Registration
-        fields = '__all__'  # this is for all the fields
+        # fields of Registration
+        fields = ["name", "phone", "college", "attachment", "transaction_id"]
 
     """function for validating the coupon code"""
 
     def validate_coupon(self, value):
+        if not value:
+            return value
         coupon = Coupon.objects.filter(code=value).first()
 
         if coupon and coupon.is_active:
