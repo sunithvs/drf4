@@ -1,892 +1,119 @@
-{% load socialaccount %}
-
-
-<!doctype html>
+{% load static %}
+<!DOCTYPE html>
 <html lang="en">
-
 <head>
-    <!-- Required meta tags -->
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-    <title>Courses | Trebuchet</title>
-
-    <!-- Bootstrap CSS -->
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/css/bootstrap.min.css" rel="stylesheet"
-          integrity="sha384-rbsA2VBKQhggwzxH7pPCaAqO46MgnOM80zW1RWuH61DGLwZJEdK2Kadq2F9CUG65" crossorigin="anonymous">
-    {#    <link rel="stylesheet" href="style.css">#}
-    <style>
-        @import url("https://fonts.googleapis.com/css?family=Open+Sans:800|Poppins:300,400,500,600,700,800|Roboto:300,400,500");
-
-        .btn_1,
-        .btn_2:hover,
-        .btn_1 {
-            background-image: linear-gradient(to left, #ee390f 0%, #f9b700 51%, #ee390f 100%);
-        }
-
-        body {
-            font-family: "Roboto", sans-serif;
-            padding: 0;
-            margin: 0;
-            font-size: 14px;
-        }
-
-        .section_padding {
-            padding: 140px 0px;
-        }
-
-        @media (max-width: 576px) {
-            .section_padding {
-                padding: 70px 0px;
-            }
-        }
-
-        @media only screen and (min-width: 576px) and (max-width: 767px) {
-            .section_padding {
-                padding: 70px 0px;
-            }
-        }
-
-        a {
-            text-decoration: none;
-            -webkit-transition: 0.5s;
-            transition: 0.5s;
-        }
-
-        a:hover {
-            outline: none;
-            text-decoration: none;
-        }
-
-        h1,
-        h2,
-        h3,
-        h4,
-        h5,
-        h6 {
-            color: #0c2e60;
-            font-family: "Poppins", sans-serif;
-        }
-
-        p {
-            color: #666666;
-            font-family: "Roboto", sans-serif;
-            line-height: 1.929;
-            font-size: 14px;
-            margin-bottom: 0px;
-            color: #888888;
-        }
-
-        h2 {
-            font-size: 44px;
-            line-height: 28px;
-            color: #0c2e60;
-            font-weight: 600;
-            line-height: 1.222;
-        }
-
-        @media (max-width: 576px) {
-            h2 {
-                font-size: 22px;
-                line-height: 25px;
-            }
-        }
-
-        @media only screen and (min-width: 576px) and (max-width: 767px) {
-            h2 {
-                font-size: 24px;
-                line-height: 25px;
-            }
-        }
-
-
-        @media (max-width: 576px) {
-
-            h3 {
-                font-size: 20px;
-            }
-        }
-
-        h5 {
-            font-size: 18px;
-            line-height: 22px;
-        }
-
-        img {
-            max-width: 100%;
-        }
-
-        a:focus,
-        .button:focus,
-        button:focus,
-        .btn:focus {
-            text-decoration: none;
-            outline: none;
-            box-shadow: none;
-            -webkit-transition: 1s;
-            transition: 1s;
-        }
-
-        ul {
-            list-style: none;
-            margin: 0;
-            padding: 0;
-        }
-
-        .btn_1 {
-            display: inline-block;
-            padding: 13.5px 45px;
-            border-radius: 50px;
-            font-size: 14px;
-            color: #fff;
-            -o-transition: all .4s ease-in-out;
-            -webkit-transition: all .4s ease-in-out;
-            transition: all .4s ease-in-out;
-            text-transform: capitalize;
-            background-size: 200% auto;
-            border: 1px solid transparent;
-            box-shadow: 0px 12px 20px 0px rgba(255, 126, 95, 0.15);
-        }
-
-        .btn_1:hover {
-            color: #fff !important;
-            background-position: right center;
-            box-shadow: 0px 10px 30px 0px rgba(193, 34, 10, 0.2);
-        }
-
-        @media (max-width: 576px) {
-
-            .btn_1 {
-                padding: 10px 30px;
-                margin-top: 25px;
-            }
-        }
-
-        @media only screen and (min-width: 576px) and (max-width: 767px) {
-
-            .btn_1 {
-                padding: 10px 30px;
-                margin-top: 30px;
-            }
-        }
-
-        @media only screen and (min-width: 768px) and (max-width: 991px) {
-
-            .btn_1 {
-                padding: 10px 30px;
-                margin-top: 30px;
-            }
-        }
-
-        .btn_2 {
-            display: inline-block;
-            padding: 13px 39px;
-            border-radius: 50px;
-            background-color: transparent;
-            border: 1px solid #0c2e60;
-            color: #0c2e60;
-            font-size: 14px;
-            -o-transition: all .4s ease-in-out;
-            -webkit-transition: all .4s ease-in-out;
-            transition: all .4s ease-in-out;
-            text-transform: capitalize;
-            background-size: 200% auto;
-            font-size: 15px;
-            font-weight: 500;
-        }
-
-        .btn_2:hover {
-            color: #fff !important;
-            background-position: right center;
-            border: 1px solid transparent;
-        }
-
-        @media (max-width: 576px) {
-
-            .btn_2 {
-                padding: 14px 30px;
-                margin-top: 25px;
-            }
-        }
-
-        @media only screen and (min-width: 576px) and (max-width: 767px) {
-
-            .btn_2 {
-                padding: 14px 30px;
-                margin-top: 30px;
-            }
-        }
-
-        @media only screen and (min-width: 768px) and (max-width: 991px) {
-
-            .btn_2 {
-                padding: 14px 30px;
-                margin-top: 30px;
-            }
-        }
-
-        .comments-area {
-            background: transparent;
-            border-top: 1px solid #eee;
-            padding: 45px 0;
-            margin-top: 50px;
-        }
-
-        @media (max-width: 414px) {
-
-            .comments-area {
-                padding: 50px 8px;
-            }
-        }
-
-        .comments-area h5 {
-            font-size: 16px;
-            margin-bottom: 0px;
-        }
-
-        .comments-area .comment-list {
-            padding-bottom: 48px;
-        }
-
-        @media (max-width: 413px) {
-
-            .comments-area .comment-list .single-comment h5 {
-                font-size: 12px;
-            }
-
-            .comments-area .comment-list .single-comment .comment {
-                font-size: 10px;
-            }
-        }
-
-        .comments-area .thumb {
-            margin-right: 20px;
-        }
-
-        .comments-area .thumb img {
-            width: 70px;
-            border-radius: 50%;
-        }
-
-        .comments-area .comment {
-            margin-bottom: 10px;
-            color: #777777;
-            font-size: 15px;
-        }
-
-        .course_details_area .title_top {
-            margin-top: 60px;
-            font-size: 22px;
-            font-weight: 600;
-            margin-bottom: 13px;
-        }
-
-        .course_details_area .title {
-            font-size: 22px;
-            font-weight: 600;
-            border: none;
-            cursor: pointer;
-            margin-top: 40px;
-            position: relative;
-            padding-bottom: 10px;
-            margin-bottom: 13px;
-            border-top: 1px solid #edeff2;
-            padding-top: 30px;
-        }
-
-        .course_details_area .btn_2 {
-            padding: 5px 19px;
-            font-size: 14px;
-            text-transform: capitalize !important;
-            border: 1px solid #edeff2;
-        }
-
-        .comments-area .thumb img {
-            width: 100px !important;
-            border-radius: 0;
-        }
-
-        .desc h5 a {
-            color: #0c2e60;
-        }
-
-        .desc p {
-            font-size: 12px !important;
-        }
-
-        .course_details_left .content {
-            color: #888888;
-            line-height: 1.929;
-        }
-
-        .course_details_left .course_list {
-            margin-bottom: 0;
-        }
-
-        @media (max-width: 575px) {
-
-            .course_details_left .course_list {
-                padding-left: 0;
-            }
-        }
-
-        .course_details_left .course_list li {
-            list-style: none;
-            margin-bottom: 20px;
-        }
-
-        .course_details_left .course_list li:last-child {
-            margin-bottom: 0;
-        }
-
-        @media (max-width: 991px) {
-
-            .right-contents {
-                margin-top: 50px;
-            }
-        }
-
-        .right-contents .sidebar_top {
-            padding: 40px 30px;
-            border: 1px solid #edeff2;
-        }
-
-        .right-contents .sidebar_top .btn_1 {
-            text-align: center;
-            margin-top: 20px;
-        }
-
-        .right-contents .sidebar_top span {
-            color: #888888;
-        }
-
-        .right-contents .sidebar_top .color {
-            color: #0c2e60;
-            font-size: 15px;
-        }
-
-        .right-contents .sidebar_top ul li {
-            list-style: none;
-            padding: 10px 0px;
-            margin-bottom: 10px;
-            border-bottom: 1px solid #edeff2;
-        }
-
-        .right-contents .sidebar_top ul li:last-child {
-            border-bottom: 0px solid #edeff2;
-        }
-
-        .right-contents .sidebar_top ul li a {
-            text-align: left;
-        }
-
-        .right-contents .sidebar_top ul li a p {
-            margin-bottom: 0px;
-        }
-
-        .right-contents .sidebar_top ul li .or {
-            font-weight: 500;
-        }
-
-
-        @media (max-width: 1024px) {
-
-            .right-contents .single-reviews .thumb {
-                margin-right: 10px;
-            }
-        }
-
-        .right-contents .single-reviews h5 {
-            display: inline-flex;
-        }
-
-        @media (max-width: 1024px) {
-
-            .right-contents .single-reviews h5 {
-                display: block;
-            }
-        }
-
-        .right-contents .comments-area {
-            padding: 0;
-            border: 0;
-            background: transparent;
-        }
-
-        h1 {
-            font-size: 36px;
-        }
-
-        h2 {
-            font-size: 30px;
-        }
-
-        h3 {
-            font-size: 24px;
-        }
-
-        h4 {
-            font-size: 18px;
-        }
-
-        h5 {
-            font-size: 16px;
-        }
-
-        h6 {
-            font-size: 14px;
-        }
-
-        h1,
-        h2,
-        h3,
-        h4,
-        h5,
-        h6 {
-            line-height: 1.2em;
-        }
-
-        .breadcrumb_bg {
-            background-image: url("./img/breadcrumb.png");
-            background-position: center;
-            background-repeat: no-repeat;
-            background-size: cover;
-        }
-
-        .breadcrumb {
-            position: relative;
-            z-index: 1;
-            text-align: center;
-        }
-
-        .breadcrumb:after {
-            position: absolute;
-            left: 0;
-            top: 0;
-            width: 100%;
-            height: 100%;
-            background-color: #000;
-            content: "";
-            opacity: 0.8;
-            z-index: -1;
-        }
-
-        .breadcrumb .breadcrumb_iner {
-            height: 450px;
-            width: 100%;
-            display: table;
-        }
-
-        .breadcrumb .breadcrumb_iner .breadcrumb_iner_item {
-            display: table-cell;
-            vertical-align: middle;
-        }
-
-        .breadcrumb .breadcrumb_iner .breadcrumb_iner_item h2 {
-            color: #fff;
-            font-size: 50px;
-            font-weight: 600;
-            margin-bottom: 10px;
-            text-transform: capitalize;
-        }
-
-        @media (max-width: 576px) {
-
-            .breadcrumb .breadcrumb_iner .breadcrumb_iner_item h2 {
-                font-size: 35px;
-            }
-        }
-
-        @media only screen and (min-width: 576px) and (max-width: 767px) {
-
-            .breadcrumb .breadcrumb_iner .breadcrumb_iner_item h2 {
-                font-size: 35px;
-            }
-        }
-
-        @media only screen and (min-width: 768px) and (max-width: 991px) {
-
-            .breadcrumb .breadcrumb_iner .breadcrumb_iner_item h2 {
-                font-size: 40px;
-            }
-        }
-
-        .breadcrumb {
-            margin-bottom: 0px !important;
-        }
-
-        .footer-area {
-            background-color: #f7f7f7;
-        }
-
-        .footer-area .copyright_part_text {
-            padding-top: 26px;
-            padding-bottom: 26px;
-            border-top: 1px solid #dedede;
-        }
-
-        .footer-area .copyright_part_text p {
-            font-size: 15px;
-        }
-
-        @media (max-width: 576px) {
-
-            .footer-area .copyright_part_text {
-                text-align: center;
-            }
-
-            .footer-area .copyright_part_text p {
-                font-size: 13px;
-            }
-        }
-
-        @media only screen and (min-width: 576px) and (max-width: 767px) {
-            .footer-area .copyright_part_text {
-                text-align: center;
-            }
-
-            .footer-area .copyright_part_text p {
-                font-size: 13px;
-            }
-        }
-
-        @media only screen and (min-width: 768px) and (max-width: 991px) {
-
-            .footer-area .copyright_part_text {
-                text-align: center;
-            }
-        }
-
-        .login {
-            display: "flex";
-            background-color: "red"
-
-        }
-
-        .social-button {
-            margin: 10px;
-            width: 200px;
-            padding: 5px 0px;
-            font-size: 18px;
-            font-weight: bold;
-            border-radius: 8px;
-            outline: none;
-            border: none;
-            text-align: center;
-            cursor: pointer;
-            transition: .2s all;
-            display: flex;
-            justify-content: center;
-            align-items: baseline;
-            text-decoration: none;
-        }
-
-        .git {
-            background-color: #24292e;
-            color: white;
-        }
-
-        .google {
-            background-color: #fff;
-            /*   color: #5857FD; */
-            color: white;
-            /*   border: 2px solid #6563FF; */
-
-            background: #FC5C7D; /* fallback for old browsers */
-            background: -webkit-linear-gradient(to right, #6A82FB, #FC5C7D); /* Chrome 10-25, Safari 5.1-6 */
-            background: linear-gradient(to right, #6A82FB, #FC5C7D); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
-
-
-        }
-
-        .social-button:hover,
-        .social-button:active {
-            transform: translateY(-2px);
-            box-shadow: rgba(50, 50, 93, 0.25) 0px 13px 27px -5px, rgba(0, 0, 0, 0.3) 0px 8px 16px -8px;
-        }
-
-        .icon {
-            margin-right: 10px;
-        }
-
-
-    </style>
+    <meta charset="UTF-8">
+    <title>Document</title>
+    <link rel="stylesheet" href="{% static 'css/login.css' %}">
 </head>
-
 <body>
 
-
-<!-- breadcrumb start-->
-<section class="breadcrumb breadcrumb_bg">
-    <div class="container">
-        <div class="row">
-            <div class="col-lg-12">
-                <div class="breadcrumb_iner text-center">
-                    <div class="breadcrumb_iner_item">
-                        <h2>Course Details</h2>
+<div id="container" class="container">
+    <!-- FORM SECTION -->
+    <div class="row">
+        <!-- SIGN UP -->
+        <div class="col align-items-center flex-col sign-up">
+            <div class="form-wrapper align-items-center">
+                <div class="form sign-up">
+                    <div class="input-group">
+                        <i class='bx bxs-user'></i>
+                        <input type="text" placeholder="Username">
                     </div>
+                    <div class="input-group">
+                        <i class='bx bx-mail-send'></i>
+                        <input type="email" placeholder="Email">
+                    </div>
+                    <div class="input-group">
+                        <i class='bx bxs-lock-alt'></i>
+                        <input type="password" placeholder="Password">
+                    </div>
+                    <div class="input-group">
+                        <i class='bx bxs-lock-alt'></i>
+                        <input type="password" placeholder="Confirm password">
+                    </div>
+                    <button>
+                        Sign up
+                    </button>
+                    <p>
+            <span>
+              Already have an account?
+            </span>
+                        <b onclick="toggle()" class="pointer">
+                            Sign in here
+                        </b>
+                    </p>
                 </div>
+            </div>
+
+        </div>
+        <!-- END SIGN UP -->
+        <!-- SIGN IN -->
+        <div class="col align-items-center flex-col sign-in">
+            <div class="form-wrapper align-items-center">
+                <div class="form sign-in">
+                    <div class="input-group">
+                        <i class='bx bxs-user'></i>
+                        <input type="text" placeholder="Username">
+                    </div>
+                    <div class="input-group">
+                        <i class='bx bxs-lock-alt'></i>
+                        <input type="password" placeholder="Password">
+                    </div>
+                    <button>
+                        Sign in
+                    </button>
+                    <p>
+                        <b>
+                            Forgot password?
+                        </b>
+                    </p>
+                    <p>
+            <span>
+              Don't have an account?
+            </span>
+                        <b onclick="toggle()" class="pointer">
+                            Sign up here
+                        </b>
+                    </p>
+                </div>
+            </div>
+            <div class="form-wrapper">
+
             </div>
         </div>
+        <!-- END SIGN IN -->
     </div>
-</section>
-<!-- breadcrumb start-->
+    <!-- END FORM SECTION -->
+    <!-- CONTENT SECTION -->
+    <div class="row content-row">
+        <!-- SIGN IN CONTENT -->
+        <div class="col align-items-center flex-col">
+            <div class="text sign-in">
+                <h2>
+                    Welcome User!
+                </h2>
 
-<!--================ Start Course Details Area =================-->
-<section class="course_details_area section_padding">
-    <div class="container">
-        <div class="row">
-            <div class="col-lg-8 course_details_left">
-                <div class="main_image">
-                    <img class="img-fluid" src="img/single_cource.png" alt="">
-                </div>
-                <div class="content_wrapper">
-                    <h4 class="title_top">Objectives</h4>
-                    <div class="content">
-                        When you enter into any new area of science, you almost always find yourself with a
-                        baffling new language of
-                        technical terms to learn before you can converse with the experts. This is certainly
-                        true in astronomy both in
-                        terms of terms that refer to the cosmos and terms that describe the tools of the trade,
-                        the most prevalent
-                        being the telescope.
-                        <br>
-                        <br>
-                        Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor
-                        incididunt ut labore et dolore
-                        magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi
-                        ut aliquip ex ea
-                        commodoconsequat. Duis aute irure dolor in reprehenderit in voluptate velit esse
-                        cillum. Lorem ipsum dolor sit
-                        amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et
-                        dolore magna aliqua. Ut enim
-                        ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea
-                        commodo consequat. Duis aute
-                        irure dolor in reprehenderit in voluptate velit esse cillum.
-                    </div>
-
-                    <h4 class="title">Eligibility</h4>
-                    <div class="content">
-                        Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor
-                        incididunt ut labore et dolore
-                        magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi
-                        ut aliquip ex ea commodo
-                        consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum.
-                        <br>
-                        <br>
-                        Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor
-                        incididunt ut labore et dolore
-                        magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi
-                        ut aliquip ex ea
-                        commodoconsequat. Duis aute irure dolor in reprehenderit in voluptate velit esse
-                        cillum. Lorem ipsum dolor sit
-                        amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et
-                        dolore magna aliqua. Ut enim
-                        ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea
-                        commodo consequat. Duis aute
-                        irure dolor in reprehenderit in voluptate velit esse cillum.
-                    </div>
-
-                    <h4 class="title">Course Outline</h4>
-                    <div class="content">
-                        <ul class="course_list">
-                            <li class="justify-content-between align-items-center d-flex">
-                                <p>Introduction Lesson</p>
-                                <a class="btn_2 text-uppercase" href="#">View Details</a>
-                            </li>
-                            <li class="justify-content-between align-items-center d-flex">
-                                <p>Basics of HTML</p>
-                                <a class="btn_2 text-uppercase" href="#">View Details</a>
-                            </li>
-                            <li class="justify-content-between align-items-center d-flex">
-                                <p>Getting Know about HTML</p>
-                                <a class="btn_2 text-uppercase" href="#">View Details</a>
-                            </li>
-                            <li class="justify-content-between align-items-center d-flex">
-                                <p>Tags and Attributes</p>
-                                <a class="btn_2 text-uppercase" href="#">View Details</a>
-                            </li>
-                            <li class="justify-content-between align-items-center d-flex">
-                                <p>Basics of CSS</p>
-                                <a class="btn_2 text-uppercase" href="#">View Details</a>
-                            </li>
-                            <li class="justify-content-between align-items-center d-flex">
-                                <p>Getting Familiar with CSS</p>
-                                <a class="btn_2 text-uppercase" href="#">View Details</a>
-                            </li>
-                            <li class="justify-content-between align-items-center d-flex">
-                                <p>Introduction to Bootstrap</p>
-                                <a class="btn_2 text-uppercase" href="#">View Details</a>
-                            </li>
-                            <li class="justify-content-between align-items-center d-flex">
-                                <p>Responsive Design</p>
-                                <a class="btn_2 text-uppercase" href="#">View Details</a>
-                            </li>
-                            <li class="justify-content-between align-items-center d-flex">
-                                <p>Canvas in HTML 5</p>
-                                <a class="btn_2 text-uppercase" href="#">View Details</a>
-                            </li>
-                        </ul>
-                    </div>
-                </div>
             </div>
+            <div class="img sign-in">
 
-
-            <div class="col-lg-4 right-contents">
-                <div class="sidebar_top">
-                    <ul>
-                        <li>
-                            <a class="justify-content-between d-flex" href="#">
-                                <p>Trainer’s Name</p>
-                                <span class="color">George Mathews</span>
-                            </a>
-                        </li>
-                        <li>
-                            <a class="justify-content-between d-flex" href="#">
-                                <p>Course Fee </p>
-                                <span>$230</span>
-                            </a>
-                        </li>
-                        <li>
-                            <a class="justify-content-between d-flex" href="#">
-                                <p>Available Seats </p>
-                                <span>15</span>
-                            </a>
-                        </li>
-                        <li>
-                            <a class="justify-content-between d-flex" href="#">
-                                <p>Schedule </p>
-                                <span>2.00 pm to 4.00 pm</span>
-                            </a>
-                        </li>
-
-                    </ul>
-
-                    {% if user.is_authenticated %}
-                        <a href="form.html" class="btn_1 d-block">Enroll the course</a>
-                    {% else %}
-                        <div class="login d-flex align-items-center ">
-                            <a href="{% provider_login_url 'github' %}" class="git social-button">
-                                <i class="uil uil-github-alt icon"></i>Github
-                            </a>
-                            <a href="{% provider_login_url 'google' %}" class="google social-button">
-                                <i class="uil uil-google icon"></i> Google
-                            </a>
-                        </div>
-                    {% endif %}
-                </div>
-
-
-                <div class="content">
-
-
-                    <div class="comments-area mb-30">
-                        <h4 class="title">Trainers</h4>
-                        <div class="comment-list">
-                            <div class="single-comment single-reviews justify-content-between d-flex">
-                                <div class="user justify-content-between d-flex">
-                                    <div class="thumb">
-                                        <img src="img/cource/cource_1.png" alt="">
-                                    </div>
-                                    <div class="desc">
-                                        <h5><a href="#">Emilly Blunt</a>
-                                        </h5>
-                                        <div class="rating">
-                                            <a href="#"><img src="img/icon/color_star.svg" alt=""></a>
-                                            <a href="#"><img src="img/icon/color_star.svg" alt=""></a>
-                                            <a href="#"><img src="img/icon/color_star.svg" alt=""></a>
-                                            <a href="#"><img src="img/icon/color_star.svg" alt=""></a>
-                                            <a href="#"><img src="img/icon/star.svg" alt=""></a>
-                                        </div>
-                                        <p class="comment">
-                                            Blessed made of meat doesn't lights doesn't was dominion and sea earth
-                                            form
-                                        </p>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="comment-list">
-                            <div class="single-comment single-reviews justify-content-between d-flex">
-                                <div class="user justify-content-between d-flex">
-                                    <div class="thumb">
-                                        <img src="img/cource/cource_2.png" alt="">
-                                    </div>
-                                    <div class="desc">
-                                        <h5><a href="#">Elsie Cunningham</a>
-                                        </h5>
-                                        <div class="rating">
-                                            <a href="#"><img src="img/icon/color_star.svg" alt=""></a>
-                                            <a href="#"><img src="img/icon/color_star.svg" alt=""></a>
-                                            <a href="#"><img src="img/icon/color_star.svg" alt=""></a>
-                                            <a href="#"><img src="img/icon/color_star.svg" alt=""></a>
-                                            <a href="#"><img src="img/icon/star.svg" alt=""></a>
-                                        </div>
-                                        <p class="comment">
-                                            Blessed made of meat doesn't lights doesn't was dominion and sea earth
-                                            form
-                                        </p>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="comment-list">
-                            <div class="single-comment single-reviews justify-content-between d-flex">
-                                <div class="user justify-content-between d-flex">
-                                    <div class="thumb">
-                                        <img src="img/cource/cource_3.png" alt="">
-                                    </div>
-                                    <div class="desc">
-                                        <h5><a href="#">Maria Luna</a>
-                                        </h5>
-                                        <div class="rating">
-                                            <a href="#"><img src="img/icon/color_star.svg" alt=""></a>
-                                            <a href="#"><img src="img/icon/color_star.svg" alt=""></a>
-                                            <a href="#"><img src="img/icon/color_star.svg" alt=""></a>
-                                            <a href="#"><img src="img/icon/color_star.svg" alt=""></a>
-                                            <a href="#"><img src="img/icon/star.svg" alt=""></a>
-                                        </div>
-                                        <p class="comment">
-                                            Blessed made of meat doesn't lights doesn't was dominion and sea earth
-                                            form
-                                        </p>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
             </div>
         </div>
-    </div>
-</section>
-<!--================ End Course Details Area =================-->
+        <!-- END SIGN IN CONTENT -->
+        <!-- SIGN UP CONTENT -->
+        <div class="col align-items-center flex-col">
+            <div class="img sign-up">
 
-<!-- footer part start-->
-<footer class="footer-area">
-    <div class="container-fluid">
-        <div class="row">
-            <div class="col-lg-12">
-                <div class="copyright_part_text text-center">
-                    <div class="row">
-                        <div class="col-lg-12">
-                            <p class="footer-text m-0">
-                                <!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. -->
-                                Copyright &copy;
-                                <script>document.write(new Date().getFullYear());</script>
-                                All rights reserved |
-                                Made with ❤️ by <a href="https://trebuchet.one" target="_blank">Trebuchet</a>
-                                <!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. -->
-                            </p>
-                        </div>
-                    </div>
-                </div>
+            </div>
+            <div class="text sign-up">
+                <h2>
+                    Join with us
+                </h2>
+
             </div>
         </div>
+        <!-- END SIGN UP CONTENT -->
     </div>
-</footer>
-<!-- footer part end-->
-
-
+    <!-- END CONTENT SECTION -->
+</div>
 </body>
-
 </html>
