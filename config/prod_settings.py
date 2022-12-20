@@ -51,8 +51,6 @@ INSTALLED_APPS = [
 
     # local apps
     "home",
-    "registration",
-    "login"
 
 ]
 
