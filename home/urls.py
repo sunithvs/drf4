@@ -20,11 +20,8 @@ from home import views
 
 router = routers.DefaultRouter()
 
-# router.register('', views.HomeView)
-router.register(r'session', views.SessionViewSet)
-router.register(r'coupon', views.CouponViewSet)
 
 urlpatterns = [
-    path("", views.HomeView.as_view()),
+
     path("", include(router.urls)),
 ]
